@@ -1,0 +1,6 @@
+.btn-simple{
+    background: $blue;
+    color: $red;
+    padding: 1rem;
+    @include flexCenter;
+}
