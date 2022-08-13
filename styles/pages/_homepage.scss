@@ -404,7 +404,7 @@
     position: relative;
     @include flexCenter;
     flex-direction: column;
-    padding: 20px 10px;
+    padding: 20px 0px;
 
     &:not(:last-child):after {
       content: "";
@@ -416,6 +416,11 @@
       right: 0;
     }
     p {
+      width: 75%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: center;
       font-size: 20px;
       font-weight: bold;
       font-stretch: normal;
@@ -425,6 +430,11 @@
       color: #666768;
     }
     span {
+      width: 80%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: center;
       font-size: 16px;
       font-weight: normal;
       font-stretch: normal;
@@ -590,6 +600,7 @@
 
 .categories {
   margin-top: 20px;
+  padding-bottom: 30px;
   &__item {
     p {
       font-size: 18px;
@@ -609,7 +620,13 @@
         line-height: 1.5;
         letter-spacing: normal;
         color: #666768;
+        cursor: pointer;
       }
+    }
+  }
+  @include mobileScreen {
+    &__item {
+      margin-top: 20px;
     }
   }
 }

@@ -1,8 +1,26 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 function Home() {
+  const [homeData, setHomeData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    const response = await fetch("/api/homepage");
+    const data = await response.json();
+    setIsLoading(false);
+    setHomeData(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div className='homeHeader'>
@@ -40,19 +58,19 @@ function Home() {
         </div>
       </div>
 
-      <div className='popularSearches container'>
+      <section className='popularSearches container'>
         <div className='popularSearches__title'>
           <span>Popüler Aramalar</span>
         </div>
         <div className='popularSearches__btns'>
-          <div className='popularSearches__btns__item'>UX DESIGNER</div>
-          <div className='popularSearches__btns__item'>UX DESIGNER</div>
-          <div className='popularSearches__btns__item'>UX DESIGNER</div>
-          <div className='popularSearches__btns__item'>UX DESIGNER</div>
-          <div className='popularSearches__btns__item'>UX DESIGNER</div>
+          {homeData.popularSearches.map((item) => (
+            <div key={item.id} className='popularSearches__btns__item'>
+              {item.text}
+            </div>
+          ))}
         </div>
         <div className='popularSearches__overlay'></div>
-      </div>
+      </section>
 
       <div className='homeContent'>
         <div className='homeContent__bg1'></div>
@@ -61,7 +79,7 @@ function Home() {
         <div className='container'>
           <h5>Öne çıkan iş ilanları</h5>
 
-          <div className='carousel row'>
+          <section className='carousel row'>
             <div className='carousel__arrow'>
               <span></span>
             </div>
@@ -69,27 +87,19 @@ function Home() {
               <span></span>
             </div>
 
-            <div className='carousel__item col-2'>
-              <p>IT Müdürü</p>
-              <span>Bosch</span>
-              <Image
-                src='/assets/1280PxBshBoschUndSiemensHausgeraTeLogoSvgCopy.png'
-                alt='Picture of the author'
-                width={"100%"}
-                height={"25%"}
-              />
-            </div>
-            <div className='carousel__item col-2'>
-              <p>IT Müdürü</p>
-              <span>Bosch</span>
-              <Image
-                src='/assets/1280PxBshBoschUndSiemensHausgeraTeLogoSvgCopy.png'
-                alt='Picture of the author'
-                width={"100%"}
-                height={"25%"}
-              />
-            </div>
-          </div>
+            {homeData.jobPosting.map((item) => (
+              <div key={item.id} className='carousel__item col-2'>
+                <p>{item.title}</p>
+                <span>{item.subTitle}</span>
+                <Image
+                  src={`/assets/${item.image}`}
+                  alt={item.subTitle}
+                  width={"100%"}
+                  height={"25%"}
+                />
+              </div>
+            ))}
+          </section>
 
           <div className='gallery row'>
             <div className='gallery__item col-6'>
@@ -112,30 +122,16 @@ function Home() {
           </div>
 
           <div className='references row'>
-            <div className='references__item col-2'>
-              <Image
-                src='/assets/1Acibadem.png'
-                alt='Picture of the author'
-                width={"100%"}
-                height={95}
-              />
-            </div>
-            <div className='references__item col-2'>
-              <Image
-                src='/assets/1Acibadem.png'
-                alt='Picture of the author'
-                width={"100%"}
-                height={95}
-              />
-            </div>
-            <div className='references__item col-2'>
-              <Image
-                src='/assets/1Acibadem.png'
-                alt='Picture of the author'
-                width={"100%"}
-                height={95}
-              />
-            </div>
+            {homeData.references.map((item) => (
+              <div key={item.id} className='references__item col-1-4'>
+                <Image
+                  src={`/assets/${item.image}`}
+                  alt={item.alt}
+                  width={"100%"}
+                  height={item.height}
+                />
+              </div>
+            ))}
           </div>
 
           <h4>Sizin için iş ilanları</h4>
@@ -144,17 +140,33 @@ function Home() {
             <div className='categories__item col-3'>
               <p>Popüler Kategoriler</p>
               <ul>
-                <li>asd</li>
-                <li>asd</li>
-                <li>asd</li>
+                {homeData.forYou.popularCategories.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+                ))}
               </ul>
             </div>
             <div className='categories__item col-3'>
-              <p>Popüler Kategoriler</p>
+              <p>Popüler Başlıklar</p>
               <ul>
-                <li>asd</li>
-                <li>asd</li>
-                <li>asd</li>
+                {homeData.forYou.popularTitles.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+                ))}
+              </ul>
+            </div>
+            <div className='categories__item col-3'>
+              <p>Popüler Lokasyonlar</p>
+              <ul>
+                {homeData.forYou.popularLocations.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+                ))}
+              </ul>
+            </div>
+            <div className='categories__item col-3'>
+              <p>Popüler Şirket İlanları</p>
+              <ul>
+                {homeData.forYou.popularCompany.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+                ))}
               </ul>
             </div>
           </section>
@@ -169,18 +181,16 @@ function Home() {
             </div>
             <div className='homeFooter__top__more'>
               <ul>
-                <li>Gizlilik</li>
-                <li>Gizlilik</li>
-                <li>Gizlilik</li>
-                <li>Gizlilik</li>
+                {homeData.faq.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+                ))}
               </ul>
             </div>
             <div className='homeFooter__top__more'>
               <ul>
-                <li>Gizlilik</li>
-                <li>Gizlilik</li>
-                <li>Gizlilik</li>
-                <li>Gizlilik</li>
+                {homeData.footerAbout.map((item) => (
+                  <li key={item.id}>{item.text}</li>
+                ))}
               </ul>
             </div>
             <div className='homeFooter__top__language'>
