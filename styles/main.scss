@@ -2,5 +2,14 @@
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
 
+//import vendors
+@import "./vendors/layout";
+
+// import base
+@import "./base/reset";
+
 // import components
 @import "./components/buttons";
+
+// import pages
+@import "./pages/homepage";

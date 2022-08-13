@@ -1,0 +1,311 @@
+.homeHeader {
+  background-image: url(../../public/assets/bg.webp);
+  width: 100%;
+  height: 470px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &__usersBtns {
+    position: absolute;
+    top: 30px;
+    right: 150px;
+    display: flex;
+
+    div {
+      width: 100px;
+      height: 36px;
+      margin: 0 0 0 20px;
+      padding: 0 15px;
+      border-radius: 18px;
+      border: solid 1px $lightColor;
+      cursor: pointer;
+      @include flexCenter;
+
+      a {
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-decoration: none;
+        color: $lightColor;
+      }
+    }
+  }
+
+  &__title {
+    padding-top: 150px;
+    text-align: center;
+
+    h1 {
+      color: $lightColor;
+      font-size: 60px;
+      letter-spacing: 3px;
+      font-weight: 100;
+      strong {
+        letter-spacing: 0px;
+        margin-right: 3px;
+      }
+    }
+    p {
+      color: $lightColor;
+      font-size: 45px;
+      margin-top: 10px;
+    }
+  }
+
+  &__search {
+    padding-top: 100px;
+    @include flexCenter;
+
+    &__input {
+      width: 554px;
+      height: 56px;
+      margin: 0 15px;
+      border-radius: 28px;
+      background-color: $lightColor;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+
+      span {
+        @include bgContain("../../public/assets/iconFilledSearch.png");
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        font-size: 18px;
+        color: #808285;
+        &:focus-visible {
+          outline: none;
+        }
+        &::placeholder {
+          color: #808285;
+          opacity: 1; /* Firefox */
+        }
+      }
+    }
+
+    &__btn {
+      width: 160px;
+      height: 56px;
+      margin: 0 10px;
+      border-radius: 28px;
+      background-color: $lightColor;
+      position: relative;
+      @include flexCenter;
+
+      span {
+        @include bgContain("../../public/assets/group6.png");
+        height: 25px;
+        width: 60px;
+      }
+      a {
+        color: $lightColor;
+        position: absolute;
+        bottom: -20px;
+        font-size: 14px;
+        font-weight: 100;
+      }
+    }
+  }
+
+  @include tabletScreen {
+    height: 320px;
+    &__usersBtns {
+      div {
+        width: 80px;
+        height: 30px;
+        margin: 0 0 0 15px;
+        padding: 0 12px;
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+    &__title {
+      padding-top: 110px;
+      h1 {
+        font-size: 45px;
+      }
+      p {
+        font-size: 35px;
+        margin-top: 5px;
+      }
+    }
+    &__search {
+      padding-top: 40px;
+      &__input {
+        width: 250px;
+        height: 35px;
+        margin: 0 10px;
+        span {
+          width: 20px;
+          height: 20px;
+        }
+        input {
+          font-size: 12px;
+        }
+      }
+      &__btn {
+        width: 120px;
+        height: 40px;
+        margin: 0;
+        span {
+          height: 20px;
+          width: 35px;
+        }
+        a {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  @include mobileScreen {
+    height: 130px;
+    &__usersBtns {
+      top: 10px;
+      right: initial;
+      @include absoluteCenter;
+
+      div {
+        width: 60px;
+        height: 20px;
+        margin: 0 0 0 15px;
+        padding: 0 12px;
+        a {
+          font-size: 10px;
+        }
+      }
+    }
+
+    &__title {
+      padding-top: 40px;
+      h1 {
+        font-size: 25px;
+      }
+      p {
+        font-size: 18px;
+        margin-top: 0px;
+      }
+    }
+
+    &__search {
+      padding-top: 10px;
+      &__input {
+        width: 120px;
+        height: 20px;
+        margin: 0 5px;
+        padding: 0 10px;
+        span {
+          width: 15px;
+          height: 15px;
+          margin-right: 10px;
+        }
+        input {
+          font-size: 7px;
+        }
+      }
+      &__btn {
+        width: 50px;
+        height: 20px;
+        margin: 0;
+        span {
+          height: 20px;
+          width: 25px;
+        }
+        a {
+          font-size: 8px;
+          bottom: -10px;
+        }
+      }
+    }
+  }
+}
+
+.popularSearches {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 23px 0;
+
+  &__title {
+    width: 345px;
+    span {
+      font-size: 20px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #666768;
+    }
+  }
+
+  &__btns {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+
+    &__item {
+      padding: 15px 25px;
+      margin: 0 17px 0 0;
+      border-radius: 28px;
+      border: solid 1px rgba(191, 191, 191, 0.7);
+      background-color: #e9e9e9;
+      color: #666768;
+      font-size: 16px;
+      text-align: center;
+      @include flexCenter;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background-image: linear-gradient(to left, #fff 25%, transparent);
+  }
+
+  @include tabletScreen {
+    background-color: rgba(107, 121, 152, 0.05);
+    padding: 15px 10px;
+    &__title {
+      width: 250px;
+      span {
+        font-size: 18px;
+      }
+    }
+    &__btns {
+      &__item {
+        padding: 10px 20px;
+        margin: 0 12px 0 0;
+        font-size: 14px;
+        @include flexCenter;
+      }
+    }
+  }
+  @include mobileScreen {
+    &__title {
+      width: 150px;
+      span {
+        font-size: 12px;
+      }
+    }
+    &__btns {
+      &__item {
+        padding: 8px 13px;
+        margin: 0 8px 0 0;
+        font-size: 10px;
+        @include flexCenter;
+      }
+    }
+  }
+}
