@@ -166,6 +166,10 @@
     border: solid 1px $mainBlue;
     @include flexCenter;
     cursor: pointer;
+    transition: transform 0.2s ease;
+    &:hover {
+      transform: scale(0.95);
+    }
     span {
       @include bgContain("../../public/assets/group6.png");
       height: 25px;
@@ -347,9 +351,23 @@
 
   @include tabletScreen {
     &__sidebar {
+      &__profile {
+        h2 {
+          font-size: 20px;
+        }
+        p {
+          font-size: 14px;
+        }
+      }
       .profilePicture {
         width: 200px;
         height: 200px;
+
+        &__bg {
+          width: 80px;
+          height: 80px;
+          top: calc(50% - 40px);
+        }
       }
     }
   }

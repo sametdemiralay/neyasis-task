@@ -20,6 +20,10 @@
       border: solid 1px $lightColor;
       cursor: pointer;
       @include flexCenter;
+      transition: transform 0.2s ease;
+      &:hover {
+        transform: scale(0.95);
+      }
 
       a {
         font-size: 16px;
@@ -97,6 +101,7 @@
       background-color: $lightColor;
       position: relative;
       @include flexCenter;
+      cursor: pointer;
 
       span {
         @include bgContain("../../public/assets/group6.png");
@@ -613,10 +618,14 @@
         @include fontNormalize;
         color: $darkGray;
         cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
   @include mobileScreen {
+    text-align: center;
     &__item {
       margin-top: 20px;
       p {

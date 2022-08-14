@@ -21,6 +21,9 @@
           font-size: 14px;
           @include fontNormalize;
           cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
           &:not(:last-child):after {
             content: "";
             position: absolute;
