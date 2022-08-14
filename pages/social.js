@@ -4,6 +4,7 @@ import SocialSidebarItem from "../components/SocialSidebarItem";
 import SocialContentAbilities from "../components/SocialContentAbilities";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import Loading from "../components/Loading";
 
 const Social = () => {
   const [socialData, setSocialData] = useState({});
@@ -22,7 +23,7 @@ const Social = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const toggleSidebar = () => {

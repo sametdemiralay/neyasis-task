@@ -1,8 +1,6 @@
 This project is a design project given to me by [Neyasis Technology](https://neyasis.com/index.html).<br/>
 <br/>
-<br/>
 I have also deployed with [Vercel](https://vercel.com/) the finished version of the project:<br/> 
-<br/>
 <br/>
 Homepage: https://neyasis-task.vercel.app/ <br/> 
 Social Media: https://neyasis-task.vercel.app/social <br/> 

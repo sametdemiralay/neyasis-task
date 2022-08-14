@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "../components/Loading";
 
 function Home() {
   const [homeData, setHomeData] = useState({});
@@ -19,7 +20,7 @@ function Home() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
