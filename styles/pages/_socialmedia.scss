@@ -1,0 +1,363 @@
+.socialHeader {
+  background: #4361ee;
+  height: 100px;
+  position: relative;
+  &__bg1 {
+    @include bgContain("../../public/assets/group27.png");
+    width: 178px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &__bg2 {
+    @include bgContain("../../public/assets/group20.png");
+    @include absoluteCenter;
+    width: 82px;
+    height: 70px;
+    top: 0;
+  }
+  &__bg3 {
+    @include bgContain("../../public/assets/group22.png");
+    width: 98px;
+    height: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    .logo {
+      z-index: 9;
+      width: 50%;
+
+      p {
+        color: $lightColor;
+        font-size: 20px;
+        font-weight: 200;
+        strong {
+          font-weight: 900;
+        }
+      }
+    }
+    .profile {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 9;
+      width: 50%;
+      color: $lightColor;
+      &__title {
+        text-align: end;
+        margin-right: 10px;
+        p {
+          font-size: 16px;
+          font-weight: 900;
+          @include fontNormalize;
+          display: flex;
+          align-items: center;
+          svg {
+            margin-left: 10px;
+          }
+        }
+        span {
+          font-size: 12px;
+          @include fontNormalize;
+        }
+      }
+      &__img {
+        @include bgContain("../../public/assets/profile_user.jpeg");
+        width: 64px;
+        height: 64px;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  @include tabletScreen {
+    padding: 0 10px;
+    &__bg1 {
+      opacity: 0.4;
+      width: 130px;
+      height: 90px;
+    }
+    &__bg2 {
+      opacity: 0.4;
+      width: 65px;
+      height: 55px;
+    }
+    &__bg3 {
+      opacity: 0.4;
+    }
+  }
+
+  @include mobileScreen {
+    padding: 10px;
+    .container {
+      flex-direction: column;
+      .logo {
+        width: 100%;
+        text-align: center;
+      }
+      .profile {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        &__img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+.socialSearch {
+  background: #f5f7ff;
+  @include flexCenter;
+  padding: 20px;
+
+  .container {
+    display: flex;
+  }
+
+  &__input {
+    width: 798px;
+    height: 56px;
+    margin: 0 15px 0 0;
+    border-radius: 50px;
+    border: solid 1px #4361ee;
+    background-color: $lightColor;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+
+    span {
+      @include bgContain("../../public/assets/iconFilledSearch.png");
+      width: 24px;
+      height: 24px;
+      margin-right: 20px;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      font-size: 18px;
+      color: #808285;
+      &:focus-visible {
+        outline: none;
+      }
+      &::placeholder {
+        color: #808285;
+        opacity: 1; /* Firefox */
+      }
+    }
+  }
+
+  &__btn {
+    width: 160px;
+    height: 56px;
+    margin: 0 0 0 15px;
+    border-radius: 50px;
+    border: solid 1px #4361ee;
+    @include flexCenter;
+    cursor: pointer;
+    span {
+      @include bgContain("../../public/assets/group6.png");
+      height: 25px;
+      width: 50px;
+    }
+  }
+
+  @include tabletScreen {
+    .container {
+      width: 100%;
+      @include flexCenter;
+    }
+    &__input {
+      width: 50%;
+      height: 40px;
+      input {
+        font-size: 15px;
+      }
+    }
+    &__btn {
+      width: 20%;
+      height: 40px;
+    }
+  }
+  @include mobileScreen {
+    &__input {
+      width: 60%;
+      height: 30px;
+      margin: 0 5px 0 0;
+      input {
+        font-size: 12px;
+      }
+    }
+    &__btn {
+      margin: 0 0 0 5px;
+      width: 25%;
+      height: 30px;
+      span {
+        height: 18px;
+        width: 35px;
+      }
+    }
+  }
+}
+
+.socialWrapper {
+  display: flex;
+
+  &__sidebar {
+    width: 35%;
+
+    &__profile {
+      margin-top: 20px;
+      h2 {
+        font-size: 24px;
+        @include fontNormalize;
+        color: #4361ee;
+        margin-bottom: 15px;
+      }
+      p {
+        font-size: 18px;
+        @include fontNormalize;
+        color: #6b7998;
+        margin-bottom: 10px;
+      }
+      .cv {
+        display: flex;
+        font-size: 12px;
+        font-weight: bold;
+        @include fontNormalize;
+        color: #0d1822;
+        text-decoration: underline;
+        margin-bottom: 15px;
+        span {
+          @include bgContain("../../public/assets/shape.png");
+          width: 16px;
+          height: 16px;
+          margin-right: 10px;
+        }
+      }
+      .edit {
+        font-size: 14px;
+        font-weight: bold;
+        @include fontNormalize;
+        color: #4361ee;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .profilePicture {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      border-radius: 12px;
+      border: solid 1px #4361ee;
+      background-color: #eff1f6;
+      margin-top: 30px;
+
+      .topLeft {
+        @include bgContain("../../public/assets/group39.png");
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 64px;
+        height: 64px;
+
+        &__icon {
+          @include bgContain("../../public/assets/iconFilledEdit.png");
+          @include absoluteCenter;
+          width: 20px;
+          height: 20px;
+          top: calc(50% - 15px);
+        }
+      }
+
+      &__bg {
+        @include bgContain("../../public/assets/group3.png");
+        @include absoluteCenter;
+        width: 100px;
+        height: 100px;
+        top: calc(50% - 50px);
+      }
+    }
+  }
+
+  &__content {
+    width: 65%;
+
+    h3 {
+      font-weight: 800;
+      @include fontNormalize;
+      color: #5b6987;
+      margin-top: 30px;
+    }
+
+    &__title {
+      font-size: 24px;
+      font-weight: 800;
+      @include fontNormalize;
+      color: #4361ee;
+      margin-bottom: 5px;
+      margin-top: 20px;
+    }
+    &__subTitle {
+      font-size: 18px;
+      @include fontNormalize;
+      color: #4361ee;
+    }
+    &__text {
+      font-size: 16px;
+      line-height: 16px;
+      @include fontNormalize;
+      color: #6b7998;
+    }
+
+    ul {
+      columns: 2;
+      margin: 10px 0;
+      li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+        @include fontNormalize;
+        color: #6b7998;
+        span {
+          @include bgContain("../../public/assets/nounList1828555.png");
+          width: 14px;
+          height: 14px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  @include tabletScreen {
+    &__sidebar {
+      .profilePicture {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+
+  @include mobileScreen {
+    &__sidebar {
+      display: none;
+    }
+
+    &__content {
+      width: 100%;
+    }
+  }
+}

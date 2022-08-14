@@ -10,6 +10,13 @@
   transform: translate(-50%, 0);
 }
 
+@mixin fontNormalize {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
 @mixin bgContain($image) {
   background-image: url($image);
   background-size: contain;

@@ -10,7 +10,10 @@
 @import "./base/base";
 
 // import components
-@import "./components/buttons";
+@import "./components/socialContentTitle";
+@import "./components/socialSidebarItem";
+@import "./components/footer";
 
 // import pages
 @import "./pages/homepage";
+@import "./pages/socialmedia";

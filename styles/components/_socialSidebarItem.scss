@@ -1,0 +1,56 @@
+.sideItemWrapper {
+  border-top: 1px solid rgba(107, 121, 152, 0.3);
+  padding-top: 30px;
+  margin-top: 30px;
+  width: 80%;
+
+  p {
+    font-size: 18px;
+    @include fontNormalize;
+    font-weight: 800;
+    color: #4361ee;
+    margin-bottom: 20px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: bold;
+    @include fontNormalize;
+    color: #4361ee;
+    text-decoration: underline;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .socialMediaIcons {
+    display: flex;
+    li {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .documentDocs {
+    li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+      p {
+        margin: 0;
+        margin-left: 15px;
+        font-size: 18px;
+        @include fontNormalize;
+        color: #6b7998;
+      }
+      i {
+        @include bgContain("../../public/assets/iconFilledCross.png");
+        position: absolute;
+        right: 10px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.footerWrapper {
+  background: #626160;
+  &__top {
+    display: flex;
+    color: $lightColor;
+    text-align: center;
+    padding: 30px 0;
+    &__copyright {
+      text-align: start;
+      width: 20%;
+      font-size: 14px;
+      @include fontNormalize;
+    }
+    &__more {
+      width: 35%;
+      ul {
+        @include flexCenter;
+        li {
+          position: relative;
+          margin-right: 20px;
+          font-size: 14px;
+          @include fontNormalize;
+          cursor: pointer;
+          &:not(:last-child):after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: $lightColor;
+            display: block;
+            right: -10px;
+            top: 0;
+          }
+        }
+      }
+    }
+    &__language {
+      width: 10%;
+      text-align: end;
+      select {
+        background: transparent;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+        @include fontNormalize;
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &__bot {
+    width: 50%;
+    display: flex;
+    color: $lightColor;
+    padding-bottom: 30px;
+
+    p {
+      width: calc(100% - 100px);
+      margin-left: 20px;
+      font-size: 8px;
+      @include fontNormalize;
+    }
+  }
+
+  @include tabletScreen {
+    padding: 0 10px;
+    &__top {
+      &__more {
+        ul {
+          li {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  @include mobileScreen {
+    &__top {
+      flex-direction: column;
+      &__copyright {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      &__more {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      &__language {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    &__bot {
+      width: 100%;
+    }
+  }
+}

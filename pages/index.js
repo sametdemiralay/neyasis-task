@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Footer from "../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -173,57 +174,7 @@ function Home() {
         </div>
       </div>
 
-      <section className='homeFooter'>
-        <div className='container'>
-          <div className='homeFooter__top'>
-            <div className='homeFooter__top__copyright'>
-              ®2020 Finddeveloper.net
-            </div>
-            <div className='homeFooter__top__more'>
-              <ul>
-                {homeData.faq.map((item) => (
-                  <li key={item.id}>{item.text}</li>
-                ))}
-              </ul>
-            </div>
-            <div className='homeFooter__top__more'>
-              <ul>
-                {homeData.footerAbout.map((item) => (
-                  <li key={item.id}>{item.text}</li>
-                ))}
-              </ul>
-            </div>
-            <div className='homeFooter__top__language'>
-              <select>
-                <option value='tr'>Türkçe</option>
-                <option value='en'>English</option>
-              </select>
-            </div>
-          </div>
-
-          <div className='homeFooter__bot'>
-            <Image
-              src='/assets/iskurLogo.png'
-              alt='Picture of the author'
-              width={80}
-              height={80}
-            />
-            <p>
-              Finddeveloper.net A.Ş. Özel İstihdam Bürosu Olarak
-              31/08/2018-30/08/2021 tarihleri arasında faaliyette bulunmak
-              üzere, Türkiye İş Kurumu tarafından 16.07.2018 tarih ve 26124
-              sayılı karar uyarınca 170 nolu belge ile faaliyet göstermektedir.
-              4904 sayılı kanun uyarınca iş arayanlardan ücret alınmayacak ve
-              menfaat temin edilmeyecektir. Şikayetleriniz için aşağıdaki
-              telefon numaralarına başvurabilirsiniz. Diğer iller için tıklayın.
-              Türkiye İş Kurumu İstanbul İl Müdürlüğü: 0212 555 55 55 Türkiye iş
-              Kurumu İstanbul Çalışma ve İş Kurumu Ümraniye Hizmet Merkezi :
-              <br />
-              0216 523 90 26
-            </p>
-          </div>
-        </div>
-      </section>
+      <Footer more />
     </>
   );
 }
