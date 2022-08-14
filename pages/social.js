@@ -1,11 +1,27 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import SocialContentTitle from "../components/SocialContentTitle";
 import SocialSidebarItem from "../components/SocialSidebarItem";
 import SocialContentAbilities from "../components/SocialContentAbilities";
 import Footer from "../components/Footer";
-import Image from "next/image";
 
 const Social = () => {
+  const [socialData, setSocialData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    const response = await fetch("/api/social");
+    const data = await response.json();
+    setIsLoading(false);
+    setSocialData(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <section className='socialHeader'>
@@ -71,7 +87,7 @@ const Social = () => {
             </div>
 
             <div className='socialWrapper__sidebar__profile'>
-              <h2>Nesil Aksoy</h2>
+              <h2>Nesil AKSOY</h2>
               <p>UX Designer</p>
               <p>Türkiye, İstanbul, Sarıyer</p>
               <p>eray_karakullukcu.neyasis.com</p>
@@ -85,17 +101,24 @@ const Social = () => {
             <SocialSidebarItem
               title='Web Sitesi'
               bottomText='Düzenle'
+              data={socialData.websites}
               horizontal
             />
             <SocialSidebarItem
               title='Dökümanlar'
               bottomText='Başka bir döküman ekle'
+              data={socialData.documents}
               vertical
             />
-            <SocialSidebarItem title='Kaydedilen Aramalarım' vertical />
+            <SocialSidebarItem
+              title='Kaydedilen Aramalarım'
+              data={socialData.savedSearches}
+              vertical
+            />
             <SocialSidebarItem
               title='Başvurularım'
               bottomText='Tümünü Gör'
+              data={socialData.myApplications}
               vertical
             />
           </section>
@@ -168,8 +191,14 @@ const Social = () => {
             <p className='socialWrapper__content__text'>Microsoft</p>
             <p className='socialWrapper__content__text'>January 2015</p>
 
-            <SocialContentAbilities title='Yetenekler' />
-            <SocialContentAbilities title='İlgi Alanları' />
+            <SocialContentAbilities
+              title='Yetenekler'
+              data={socialData.abilities}
+            />
+            <SocialContentAbilities
+              title='İlgi Alanları'
+              data={socialData.interest}
+            />
           </section>
         </div>
       </div>
