@@ -59,18 +59,20 @@ function Home() {
         </div>
       </div>
 
-      <section className='popularSearches container'>
-        <div className='popularSearches__title'>
-          <span>Popüler Aramalar</span>
+      <section className='popularSearches'>
+        <div className='container'>
+          <div className='popularSearches__title'>
+            <span>Popüler Aramalar</span>
+          </div>
+          <div className='popularSearches__btns'>
+            {homeData.popularSearches.map((item) => (
+              <div key={item.id} className='popularSearches__btns__item'>
+                {item.text}
+              </div>
+            ))}
+          </div>
+          <div className='popularSearches__overlay'></div>
         </div>
-        <div className='popularSearches__btns'>
-          {homeData.popularSearches.map((item) => (
-            <div key={item.id} className='popularSearches__btns__item'>
-              {item.text}
-            </div>
-          ))}
-        </div>
-        <div className='popularSearches__overlay'></div>
       </section>
 
       <div className='homeContent'>

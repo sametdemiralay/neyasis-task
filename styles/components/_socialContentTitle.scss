@@ -9,16 +9,16 @@
 
   p {
     @include fontNormalize;
-    font-weight: 800;
+    font-weight: 600;
     color: #5b6987;
     &.blueTitle {
-      color: #4361ee;
+      color: $mainBlue;
     }
   }
   span {
     font-size: 16px;
     @include fontNormalize;
-    font-weight: bold;
-    color: #6b7998;
+    font-weight: 400;
+    color: $paleBlue;
   }
 }

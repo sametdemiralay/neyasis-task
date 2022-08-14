@@ -3,10 +3,12 @@ import SocialContentTitle from "../components/SocialContentTitle";
 import SocialSidebarItem from "../components/SocialSidebarItem";
 import SocialContentAbilities from "../components/SocialContentAbilities";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 const Social = () => {
   const [socialData, setSocialData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
 
   const fetchData = async () => {
     const response = await fetch("/api/social");
@@ -22,6 +24,10 @@ const Social = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
+  const toggleSidebar = () => {
+    setSidebar(!sidebar);
+  };
   return (
     <>
       <section className='socialHeader'>
@@ -78,7 +84,11 @@ const Social = () => {
         <div className='homeContent__bg2'></div>
         <div className='homeContent__bg3'></div>
         <div className='container socialWrapper'>
-          <section className='socialWrapper__sidebar'>
+          <section
+            className={`socialWrapper__sidebar ${
+              sidebar ? "sidebarActive" : ""
+            }`}
+          >
             <div className='profilePicture'>
               <div className='topLeft'>
                 <div className='topLeft__icon'></div>
@@ -204,6 +214,15 @@ const Social = () => {
       </div>
 
       <Footer />
+
+      <div className='mobileSideBar' onClick={toggleSidebar}>
+        <Image
+          src='/assets/group3.png'
+          alt='toggle icon'
+          width={50}
+          height={50}
+        />
+      </div>
     </>
   );
 };
